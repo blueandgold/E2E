@@ -9,6 +9,5 @@ RUN pip install webapp2
 
 ADD main.py . 
 
-EXPOSE 8080:8080
 
 CMD echo $(whoami) && echo $(ls -la) && echo $(python -V) && echo "hello from docker CMD" && python main.py
