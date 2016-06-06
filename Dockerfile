@@ -9,6 +9,6 @@ RUN pip install webapp2
 
 ADD main.py . 
 
-EXPOSE 8000 8000
+EXPOSE 8000
 
-CMD echo $(whoami) && echo $(ls -la) && echo $(python -V) && echo "hello from docker CMD" && echo $(python -m SimpleHTTPServer 8000)
+CMD echo $(whoami) && echo $(ls -la) && echo $(python -V) && echo "hello from docker CMD" && echo $(python main.py)
