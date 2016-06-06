@@ -2,8 +2,11 @@ FROM debian:jessie
 
 RUN echo "hello from docker run"
 RUN apt-get update -y
-Run apt-get install -y python python-pip
+RUN apt-get install -y python python-pip
+RUN pip install WebOb
+RUN pip install Paste
+RUN pip install webapp2
 
 ADD main.py . 
 
-CMD echo $(whoami) && echo $(ls -la) && echo $(python -V) && python -m SimpleHTTPServer 8000 && echo "hello from docker CMD" && echo $(ps aux | grep python)
+CMD echo $(whoami) && echo $(ls -la) && echo $(python -V) && echo "hello from docker CMD" && echo $(python -m SimpleHTTPServer 8000)
