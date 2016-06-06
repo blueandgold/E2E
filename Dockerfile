@@ -9,4 +9,5 @@ CMD ls -la
 CMD python -V
 CMD python -m SimpleHTTPServer 8000
 
-CMD ps aux | grep python 
+CMD ps aux | grep python
+CMD echo "hello from docker CMD"
