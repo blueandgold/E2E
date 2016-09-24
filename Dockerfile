@@ -9,6 +9,7 @@ RUN pip install google-api-python-client
 RUN pip install webapp2
 
 ADD main.py . 
+ADD iam_service.py .
 
 EXPOSE 8888
 
