@@ -5,6 +5,8 @@ import webapp2
 class HelloWebapp2(webapp2.RequestHandler):
     def get(self):
  
+        print '>>>>> aaaaa'
+
         project_id = 'henry-dev'
         service_account_id = 'test123@henry-dev.iam.gserviceaccount.com'
 
