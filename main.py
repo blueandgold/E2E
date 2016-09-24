@@ -10,13 +10,13 @@ class HelloWebapp2(webapp2.RequestHandler):
         project_id = 'henry-dev'
         service_account_id = 'test123@henry-dev.iam.gserviceaccount.com'
 
-        result = iam_service.list_keys(project_id, service_account_id)
+        #result = iam_service.list_keys(project_id, service_account_id)
 
         key_names = ''
-        for key in result['keys']:
-        	key_names += key['name'] + '<br>'
+        #for key in result['keys']:
+        #	key_names += key['name'] + '<br>'
 
-        self.response.out.write('hello<br>' + key_names)
+        self.response.out.write('helloaaaaa<br>' + key_names)
 
 
 app = webapp2.WSGIApplication([
