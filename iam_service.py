@@ -39,3 +39,8 @@ def list_keys(project_id, service_account_id):
   keys = _iam_service().projects().serviceAccounts().keys()
   request = keys.list(name=full_name)
   return request.execute()
+
+def get_service_account():
+  credentials = GoogleCredentials.get_application_default()
+  return credentials.service_account_email
+

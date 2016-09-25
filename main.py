@@ -20,7 +20,19 @@ class HelloWebapp2(webapp2.RequestHandler):
         self.response.out.write('helloaaaaa<br>' + key_names)
 
 
+class ServiceAccountHandler(webapp2.RequestHandler):
+    def get(self):
+ 
+        service_account = iam_service.get_service_account()
+
+        self.response.out.write('hello service account<br>' + service_account)
+
+
+
+
+
 app = webapp2.WSGIApplication([
+    ('/service_account', ServiceAccountHandler),
     ('/', HelloWebapp2),
 ], debug=True)
 
