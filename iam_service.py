@@ -4,6 +4,11 @@
 from apiclient import discovery
 from oauth2client.client import GoogleCredentials
 
+import logging
+
+
+logger = logging.getLogger(__name__)
+
 
 def _iam_service():
   """List the keys for a service account.
@@ -11,7 +16,7 @@ def _iam_service():
     An apiclient service object.
   """
   credentials = GoogleCredentials.get_application_default()
-  print '>>>>>'
+  logger.info('>>>>>')
   print '>>>>> credentials'
   print credentials.client_id
   print credentials.service_account_email
