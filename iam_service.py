@@ -6,6 +6,8 @@ from oauth2client.client import GoogleCredentials
 
 import logging
 
+from gcloud import credentials
+
 
 logger = logging.getLogger(__name__)
 
@@ -44,3 +46,6 @@ def get_service_account():
   credentials = GoogleCredentials.get_application_default()
   return credentials.service_account_email
 
+def gcloud_service_account():
+  cred = credentials.get_credentials()
+  return cred.service_account_email

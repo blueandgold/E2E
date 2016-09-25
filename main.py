@@ -28,10 +28,18 @@ class ServiceAccountHandler(webapp2.RequestHandler):
         self.response.out.write('hello service account<br>' + service_account)
 
 
+class GcloudServiceAccountHandler(webapp2.RequestHandler):
+    def get(self):
+ 
+        service_account = iam_service.gcloud_service_account()
+
+        self.response.out.write('hello gcloud service account<br>' + service_account)
+
 
 
 
 app = webapp2.WSGIApplication([
+    ('/gcloud_service_account', GcloudServiceAccountHandler),
     ('/service_account', ServiceAccountHandler),
     ('/', HelloWebapp2),
 ], debug=True)
