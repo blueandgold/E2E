@@ -12,8 +12,9 @@ def _iam_service():
   """
   credentials = GoogleCredentials.get_application_default()
   print '>>>>>'
-  logging.info('>>>>> credentials')
-  logging.info(credentials)
+  print '>>>>> credentials'
+  print credentials.client_id
+  print credentials.service_account_email
   return discovery.build(serviceName='iam', 
                          version='v1',
                          credentials=credentials)

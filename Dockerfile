@@ -8,7 +8,7 @@ RUN pip install Paste
 RUN pip install google-api-python-client
 RUN pip install webapp2
 
-ADD *.py ./ 
+ADD *.py ./
 
 EXPOSE 8888
 
