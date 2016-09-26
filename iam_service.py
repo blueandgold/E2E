@@ -4,11 +4,6 @@
 from apiclient import discovery
 from oauth2client.client import GoogleCredentials
 
-import logging
-
-
-logger = logging.getLogger(__name__)
-
 
 def _iam_service():
   """List the keys for a service account.
@@ -17,9 +12,6 @@ def _iam_service():
   """
   credentials = GoogleCredentials.get_application_default()
   logger.info('>>>>>')
-  print '>>>>> credentials'
-  print credentials.client_id
-  print credentials.service_account_email
   return discovery.build(serviceName='iam', 
                          version='v1',
                          credentials=credentials)
@@ -39,7 +31,3 @@ def list_keys(project_id, service_account_id):
   keys = _iam_service().projects().serviceAccounts().keys()
   request = keys.list(name=full_name)
   return request.execute()
-
-def get_service_account():
-  credentials = GoogleCredentials.get_application_default()
-  return credentials.service_account_email

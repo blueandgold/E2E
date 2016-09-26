@@ -2,11 +2,23 @@ import iam_service
 import logging
 import webapp2
 
+import logging
+import sys
+
+logger = logging.getLogger()
+logger.setLevel(logging.INFO)
+
+ch = logging.StreamHandler(sys.stdout)
+ch.setLevel(logging.INFO)
+formatter = logging.Formatter('%(levelname)s - %(message)s')
+ch.setFormatter(formatter)
+logger.addHandler(ch)
+
 
 class HelloWebapp2(webapp2.RequestHandler):
     def get(self):
  
-        logging.info('>>>>> aaaaa')
+        logger.info('>>>>> aaaaa')
 
         project_id = 'henry-dev'
         service_account_id = 'test123@henry-dev.iam.gserviceaccount.com'
@@ -20,17 +32,7 @@ class HelloWebapp2(webapp2.RequestHandler):
         self.response.out.write('helloaaaaa<br>' + key_names)
 
 
-class ServiceAccountHandler(webapp2.RequestHandler):
-    def get(self):
- 
-        service_account = iam_service.get_service_account()
-
-        self.response.out.write('hello service account<br>' + service_account)
-
-
-
 app = webapp2.WSGIApplication([
-    ('/service_account', ServiceAccountHandler),
     ('/', HelloWebapp2),
 ], debug=True)
 
