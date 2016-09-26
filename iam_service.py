@@ -11,7 +11,6 @@ def _iam_service():
     An apiclient service object.
   """
   credentials = GoogleCredentials.get_application_default()
-  logger.info('>>>>>')
   return discovery.build(serviceName='iam', 
                          version='v1',
                          credentials=credentials)
