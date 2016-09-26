@@ -14,8 +14,8 @@ class HelloWebapp2(webapp2.RequestHandler):
         result = iam_service.list_keys(project_id, service_account_id)
 
         key_names = ''
-        #for key in result['keys']:
-        #	key_names += key['name'] + '<br>'
+        for key in result['keys']:
+        	key_names += key['name'] + '<br>'
 
         self.response.out.write('helloaaaaa<br>' + key_names)
 
@@ -28,18 +28,8 @@ class ServiceAccountHandler(webapp2.RequestHandler):
         self.response.out.write('hello service account<br>' + service_account)
 
 
-class GcloudServiceAccountHandler(webapp2.RequestHandler):
-    def get(self):
- 
-        service_account = iam_service.gcloud_service_account()
-
-        self.response.out.write('hello gcloud service account<br>' + service_account)
-
-
-
 
 app = webapp2.WSGIApplication([
-    ('/gcloud_service_account', GcloudServiceAccountHandler),
     ('/service_account', ServiceAccountHandler),
     ('/', HelloWebapp2),
 ], debug=True)
