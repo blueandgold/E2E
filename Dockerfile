@@ -7,7 +7,6 @@ RUN pip install WebOb
 RUN pip install Paste
 RUN pip install google-api-python-client
 RUN pip install webapp2
-RUN pip install gcloud
 
 ADD *.py ./
 
