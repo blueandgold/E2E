@@ -4,6 +4,7 @@ RUN echo "hello from docker run"
 RUN apt-get update -y
 RUN apt-get install -y python python-pip curl
 RUN pip install WebOb
+RUN pip install Paste
 RUN pip install google-api-python-client
 RUN pip install webapp2
 
