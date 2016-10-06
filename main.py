@@ -37,7 +37,7 @@ class ServiceAccountKeyListHandler(webapp2.RequestHandler):
 
         page = ''
         for key in result['keys']:
-        	page += key['name'] + '<br>'
+            page += key['name'] + '<br>'
         self.response.out.write(page)
 
 
