@@ -1,10 +1,11 @@
-import iam_service
-import logging
-import webapp2
-
 import logging
 import sys
+import webapp2
 
+import iam_service
+
+
+# Setup stdout log handler for logging to stackdriver.
 logger = logging.getLogger()
 logger.setLevel(logging.INFO)
 
@@ -15,26 +16,42 @@ stdout_handler.setFormatter(formatter)
 logger.addHandler(stdout_handler)
 
 
-class HelloWebapp2(webapp2.RequestHandler):
+class ServiceAccountListHandler(webapp2.RequestHandler):
     def get(self):
- 
-        logger.info('>>>>> bbbbb')
+        logger.info('Listing all service accounts.')
+        project_id = name = self.request.get("project_id")
+        result = iam_service.list_service_accounts(project_id)
 
-        project_id = 'henry-dev'
-        service_account_id = 'test123@henry-dev.iam.gserviceaccount.com'
+        page = ''
+        for accounts in result['accounts']:
+            page += accounts['name'] + '<br>'
+        self.response.out.write(page)
 
+
+class ServiceAccountKeyListHandler(webapp2.RequestHandler):
+    def get(self):
+        logger.info('Listing all service account keys.')
+        project_id = name = self.request.get('project_id')
+        service_account_id = self.request.get("service_account_id")
         result = iam_service.list_keys(project_id, service_account_id)
 
-        key_names = ''
+        page = ''
         for key in result['keys']:
-        	key_names += key['name'] + '<br>'
+        	page += key['name'] + '<br>'
+        self.response.out.write(page)
 
-        self.response.out.write('helloaaaaa<br>' + key_names)
+
+class DefaultHandler(webapp2.RequestHandler):
+    def get(self):
+         self.response.out.write('Welcome to Simple GKE Server')
 
 
 app = webapp2.WSGIApplication([
-    ('/', HelloWebapp2),
+    ('/service_account/list', ServiceAccountListHandler),
+    ('/service_account_key/list', ServiceAccountKeyListHandler),
+    ('/', DefaultHandler),
 ], debug=True)
+
 
 def main():
     from paste import httpserver
@@ -42,4 +59,3 @@ def main():
 
 if __name__ == '__main__':
     main()
-

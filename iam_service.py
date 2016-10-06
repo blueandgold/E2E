@@ -30,3 +30,8 @@ def list_keys(project_id, service_account_id):
   keys = _iam_service().projects().serviceAccounts().keys()
   request = keys.list(name=full_name)
   return request.execute()
+
+def list_service_accounts(project_id):
+  full_name = 'projects/{0}'.format(project_id)
+  print full_name
+  return _iam_service().projects().serviceAccounts().list(name=full_name).execute()
