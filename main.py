@@ -43,7 +43,8 @@ class ServiceAccountKeyListHandler(webapp2.RequestHandler):
 
 class DefaultHandler(webapp2.RequestHandler):
     def get(self):
-         self.response.out.write('Welcome to Simple GKE Server')
+        logger.info('Welcome!!')
+        self.response.out.write('Welcome to Simple GKE Server')
 
 
 app = webapp2.WSGIApplication([
