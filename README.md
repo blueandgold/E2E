@@ -47,7 +47,7 @@ Push the image to GCR.
 gcloud docker push us.gcr.io/<project id>/simple-gke-server:<tag>
 ```
 
-##Step3: Deploy to GKE
+##Step 3: Deploy to GKE
 
 Create the initial service.
 ```
