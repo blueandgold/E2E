@@ -7,7 +7,9 @@ Enable IAM api in cloud console.
 Run `gcloud init`.  Create a new configuration for your project.  Make sure you are logged in.
 
 Retrieve the default application credential for your project.  Will need this to upload to GCR using gcloud tool.  This will override any other default application credential that you have downloaded.
+```
 gcloud auth application-default login
+```
 
 Create a new container cluster in your Google Cloud project.  Click "more" to expose cloud access, change cloud platform to "enabled".
 
@@ -68,7 +70,9 @@ kubectl get services simple-gke-server
 ```
 
 Test the application is running.
+```
 http://<external ip>:8888
+```
 
 Check stackdriver on cloud console to see the log message.
 filter on container engine > simplecluster > default, simple gke server
@@ -120,3 +124,5 @@ Deploy the new container image.
 kubectl set image deployment/<cluster name> <cluster name>=us.gcr.io/<project id>/<image name>:<tag>
 ```
 
+References:
+http://kubernetes.io/docs/hellonode/
